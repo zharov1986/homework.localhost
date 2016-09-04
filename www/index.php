@@ -1,7 +1,17 @@
 <?php
 
-require_once __DIR__ . '/models/News.php';
+require_once __DIR__ . '/autoload.php';
 
-$items = News::getAll();
+//Получаем значание Контроллера и Функции из браузера и формируем путь до них
+$ctrl = isset($_GET['ctrl']) ? $_GET['ctrl'] : 'News';
+$act = isset($_GET['act']) ? $_GET['act'] : 'All';
 
-include __DIR__ . '/views/index.php';
+$controllerClassName = $ctrl.'Controller';
+
+$controller = new $controllerClassName;
+
+$method = 'action'.$act;
+$controller->$method();
+
+
+

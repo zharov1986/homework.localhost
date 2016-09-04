@@ -12,7 +12,13 @@ class News
     public static function getAll()
     {
         $db = new DB;
-        return $db->qwery('SELECT * FROM news', 'News');
+        return $db->queryAll('SELECT * FROM news', 'News');
+    }
+
+    public static function getOne($id)
+    {
+        $db = new DB;
+        return $db->queryAll('SELECT * FROM news WHERE id='.$id, 'News');
     }
 
 }
